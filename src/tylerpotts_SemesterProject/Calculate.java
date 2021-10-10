@@ -3,15 +3,17 @@ package tylerpotts_SemesterProject;
 public class Calculate {
 	
 	protected double monthPayment;
-	protected double coverage;
+	public double coverage;
 	protected double percentOff;
-	protected double discount;
+	public double discount;
+	protected double percentOffPrice;
 	
 	// Variables I need to import
 	private double year;
 	private double mileage;
 	private double carCost;
 	private double creditscore;
+	
 	
 	public Calculate(double year, double mileage, double carCost, double creditScore) {
 		this.year = year;
@@ -20,15 +22,7 @@ public class Calculate {
 		this.creditscore = creditScore;
 	}
 
-	public double calculateCoverage() {
-		coverage = (((mileage + carCost)/year))*100;
-		return coverage;
-	}
 
-	public double calculateMonthPayment() {
-		monthPayment = coverage/12;
-		return monthPayment;
-	}
 
 	public double calculateDiscount() {
 		
@@ -47,11 +41,20 @@ public class Calculate {
 			return discount;
 	}
 	
-	public double calculatePercentOff() {
-		double percentOffPrice = coverage * discount;
+	
+	public double calculateCoverage() {
+		coverage = (((mileage + carCost)/year))*100;
+		percentOffPrice = coverage * discount;
 		coverage = coverage - percentOffPrice;
 		return coverage;
 	}
+	
+	public double calculateMonthPayment() {
+		monthPayment = coverage/12;
+		return monthPayment;
+	}
+
+
 		
 		
 
